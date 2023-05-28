@@ -1,0 +1,57 @@
+{% load static %}
+
+<html>
+<head>
+    <title>Weather Information</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+<body>
+    <form class="input-container" method="POST" action="{% url 'process_input' %}">
+        {% csrf_token %}
+        <input type="text" name="input_data" placeholder="City">
+        <button type="submit">Submit</button>
+    </form>
+    <div class="weather-container">
+      <h1>Weather Information</h1>
+      <div class="weather-data">
+        <div class="data-row">
+          <div class="data-label">City:</div>
+          <div class="data-value" id="city">{{ city }}</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Temperature:</div>
+          <div class="data-value" id="temp-celsius">{{ temp_celsius }}°C</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Min Temperature:</div>
+          <div class="data-value" id="temp-min-celsius">{{ temp_min_celsius }}°C</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Max Temperature:</div>
+          <div class="data-value" id="temp-max-celsius">{{ temp_max_celsius }}°C</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Humidity:</div>
+          <div class="data-value" id="humidity">{{ humidity }}%</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Description:</div>
+          <div class="data-value" id="description">{{ description }}</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Sunrise Time:</div>
+          <div class="data-value" id="sunrise-time">{{ sunrise_time }}</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Sunset Time:</div>
+          <div class="data-value" id="sunset-time">{{ sunset_time }}</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Wind Speed:</div>
+          <div class="data-value" id="wind-speed">{{ wind_speed }} m/s</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
